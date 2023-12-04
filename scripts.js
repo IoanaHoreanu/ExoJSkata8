@@ -11,6 +11,15 @@
 // console.log(nomDeMaFonction(On remplace le paramètre par ce qu'on désire)) // 
 
 // CODE ICI
+const sommeMultipliee = (a, b) => {
+    const somme = a * b;
+    const resultat = somme * a;
+    return resultat;
+}
+
+  const a = 2;
+  const b = 3;
+  console.log(sommeMultipliee(a, b));
 
 //----------------------------------------------------------------------------------------------//
 // EXERCICE 2
@@ -22,7 +31,13 @@
 // console.log(monTableau[0]) // 1
 
 // CODE ICI
-
+const premierElementDuTableau = (tableau) => {
+    return tableau[0];
+}
+    
+const monTableau = [1, 2, 3];  
+console.log(premierElementDuTableau(monTableau));
+  
 //----------------------------------------------------------------------------------------------//
 // EXERCICE 3
 
@@ -34,7 +49,13 @@
 // console.log(monTableau) // [1, 2]
 
 // CODE ICI
+const supprimerDernierElement = (tableau) => {
+    tableau.pop();
+}
 
+supprimerDernierElement(monTableau);  
+console.log(monTableau);
+  
 //----------------------------------------------------------------------------------------------//
 // EXERCICE 4
 
@@ -47,7 +68,16 @@
 // }
 
 // CODE ICI
-
+const sommeTableau = (tableau) => {
+    let somme = 0;
+    for (let i = 0; i < tableau.length; i++) {
+      somme += tableau[i];
+    }
+    return somme;
+}
+  
+console.log(sommeTableau(monTableau)); 
+  
 //----------------------------------------------------------------------------------------------//
 
 // EXERCICE 5
@@ -62,6 +92,15 @@
 //Maintenant que la string est inversée il faut la remettre en string avec la méthode join().
 
 // CODE ICI
+const inverserString = (maString) => {
+  const monTableau = maString.split("");
+  const monTableauInverse = monTableau.reverse();
+  const stringInversee = monTableauInverse.join("");
+  return stringInversee;
+}
+
+const maString = "Hello";
+console.log(inverserString(maString)); 
 
 //----------------------------------------------------------------------------------------------//
 
@@ -73,7 +112,12 @@
 // console.log(Math.max(...monTableau)) // 3
 
 // CODE ICI
-
+const plusGrandNombre = (tableau) => {
+    return Math.max(...tableau);
+}
+  
+console.log(plusGrandNombre(monTableau)); 
+  
 //----------------------------------------------------------------------------------------------//
 
 // EXERCICE 7
@@ -84,7 +128,13 @@
 // console.log(Math.min(...monTableau)) // 1
 
 // CODE ICI
-
+const plusPetitNombre = (tableau) => {
+    return Math.min(...tableau);
+}
+  
+  
+console.log(plusPetitNombre(monTableau)); 
+  
 //----------------------------------------------------------------------------------------------//
 
 // EXERCICE 8
@@ -100,7 +150,16 @@
 // })
 
 // CODE ICI
-
+const supprimerVoyelles = (maString) => {
+    const monTableau = maString.split("");
+    const monTableauSansVoyelles = monTableau.filter((element) => {
+      return !["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"].includes(element);
+    });
+    return monTableauSansVoyelles.join("");
+}
+  
+  console.log(supprimerVoyelles(maString)); 
+  
 //----------------------------------------------------------------------------------------------//
 
 // EXERCICE 9
@@ -112,7 +171,14 @@
 // console.log(monTableau.sort()) // [1, 2, 3]
 
 // CODE ICI
+const trierTableauCroissant = (tableau) => {
+    return tableau.slice().sort((a, b) => a - b);
+}
 
+const Tableau = [1, 3, 2];
+  
+console.log(trierTableauCroissant(Tableau)); 
+  
 //----------------------------------------------------------------------------------------------//
 
 // EXERCICE 10
@@ -129,7 +195,20 @@
 // console.log(monTableau) // ["Hello", "elloH", "lloHe", "loHel", "oHell"]
 
 // CODE ICI
-
+const rotationsPossibles = (maString) => {
+    const monTableau = [];
+  
+    for (let i = 0; i < maString.length; i++) {
+      const maStringRotate = maString.substring(i) + maString.substring(0, i);
+      monTableau.push(maStringRotate);
+    }
+  
+    return monTableau;
+}
+  
+console.log(rotationsPossibles(maString));
+  
+  
 //----------------------------------------------------------------------------------------------//
 
 // EXERCICE 11
