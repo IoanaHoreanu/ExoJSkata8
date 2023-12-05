@@ -222,6 +222,15 @@ console.log(rotationsPossibles(maString));
 // })
 
 // CODE ICI
+function AjoutAuTableau(tableau) {
+  const tableauModifie = tableau.map((element) => {
+      return element + 1;
+  });
+  return tableauModifie;
+}
+
+const monTableauModifie = AjoutAuTableau(monTableau);
+console.log(monTableauModifie); 
 
 //----------------------------------------------------------------------------------------------//
 
@@ -236,6 +245,16 @@ console.log(rotationsPossibles(maString));
 // })
 
 // CODE ICI
+function longueurDesChaines(tableauDeChaines) {
+  const longueurs = tableauDeChaines.map((chaine) => {
+      return chaine.length;
+  });
+  return longueurs;
+}
+
+const Tab = ["Hello", "World"];
+const longueursDesChaines = longueurDesChaines(Tab);
+console.log(longueursDesChaines);
 
 //----------------------------------------------------------------------------------------------//
 
@@ -251,6 +270,15 @@ console.log(rotationsPossibles(maString));
 // })
 
 // CODE ICI
+function premieresLettres(tableauDeChaines) {
+  const premieresLettres = tableauDeChaines.map((chaine) => {
+      return chaine.charAt(0);
+  });
+  return premieresLettres;
+}
+
+const premieresLettresDuTableau = premieresLettres(Tab);
+console.log(premieresLettresDuTableau); 
 
 //----------------------------------------------------------------------------------------------//
 
@@ -262,6 +290,15 @@ console.log(rotationsPossibles(maString));
 
 
 // CODE ICI
+function dernieresLettres(tableauDeChaines) {
+  const dernieresLettres = tableauDeChaines.map((chaine) => {
+      return chaine.charAt(chaine.length - 1);
+  });
+  return dernieresLettres;
+}
+
+const dernieresLettresDuTableau = dernieresLettres(Tab);
+console.log(dernieresLettresDuTableau); 
 
 //----------------------------------------------------------------------------------------------//
 
@@ -272,6 +309,16 @@ console.log(rotationsPossibles(maString));
 // Pour cette exercice on va utiliser la méthode filter() qui permet de filtrer un tableau, hésitez pas à regarder l'exercice 8 pour voir comment ça fonctionne. Sauf qu'ici on va filtrer en fonction de la longueur de la string. Incice : la méthode length() permet de récupérer la longueur d'une string.
 
 // CODE ICI
+function filtreLongueur(tableauDeChaines) {
+  const chainesFiltrees = tableauDeChaines.filter((chaine) => {
+      return chaine.length >= 5;
+  });
+  return chainesFiltrees;
+}
+
+const monT = ["Hello", "World", "Test", "Salut", "Yo"];
+const chainesFiltrees = filtreLongueur(monT);
+console.log(chainesFiltrees);
 
 //----------------------------------------------------------------------------------------------//
 
@@ -286,6 +333,15 @@ console.log(rotationsPossibles(maString));
 // }, 0)
 
 // CODE ICI
+function sommeDesNombres(tableauDeNombres) {
+  const somme = tableauDeNombres.reduce((accumulateur, element) => {
+      return accumulateur + element;
+  }, 0);
+  return somme;
+}
+
+const resultatSomme = sommeDesNombres(monTableau);
+console.log(resultatSomme); 
 
 //----------------------------------------------------------------------------------------------//
 
@@ -300,6 +356,15 @@ console.log(rotationsPossibles(maString));
 // console.log(monTableauConcat) // ["Hello", "World", "Test", "Salut"]
 
 // CODE ICI
+function concatenerTableaux(tableau1, tableau2) {
+  const tableauConcatene = tableau1.concat(tableau2);
+  return tableauConcatene;
+}
+
+const monTableau1 = ["Hello", "World"];
+const monTableau2 = ["Test", "Salut"];
+const tableauConcatene = concatenerTableaux(monTableau1, monTableau2);
+console.log(tableauConcatene);
 
 //----------------------------------------------------------------------------------------------//
 
@@ -310,6 +375,16 @@ console.log(rotationsPossibles(maString));
 // Pour cette exercice on va utiliser la méthode filter() qui permet de filtrer un tableau, hésitez pas à regarder l'exercice 8 pour voir comment ça fonctionne. Sauf qu'ici on va filtrer en fonction de la présence de la lettre "e". Indice : la méthode includes() permet de savoir si une string contient une lettre ou un mot.
 
 // CODE ICI
+function filtreLettreE(tableauDeChaines) {
+  const chainesFiltrees = tableauDeChaines.filter((chaine) => {
+      return chaine.includes("e");
+  });
+  return chainesFiltrees;
+}
+
+const monTableau3 = ["Poulet", "Chat", "Chien", "Cheval"];
+const chainesFiltre = filtreLettreE(monTableau3);
+console.log(chainesFiltre);
 
 //----------------------------------------------------------------------------------------------//
 
@@ -320,6 +395,19 @@ console.log(rotationsPossibles(maString));
 // Indice : il y a plusieurs façon de faire, soit avec un for, soit avec la méthode filter() une fois ça fait utilise la méthode sort() qui permet de trier un tableau.
 
 // CODE ICI
+function nombresPairsCroissants(tableauDeNombres) {
+  const nombresPairs = tableauDeNombres.filter((nombre) => {
+      return nombre % 2 === 0; 
+  });
+  const nombresPairsTriés = nombresPairs.sort((a, b) => {
+      return a - b; 
+  });
+  return nombresPairsTriés;
+}
+
+const monTableau4 = [2, 9, 6, 5, 6];
+const resultats = nombresPairsCroissants(monTableau4);
+console.log(resultats); 
 
 //----------------------------------------------------------------------------------------------//
 
@@ -352,13 +440,19 @@ console.log(rotationsPossibles(maString));
 
 
 // CODE ICI
+function findShort(phrase) {
+  const mots = phrase.split(" ");
+  const longueurs = mots.map((mot) => {
+      return mot.length;
+  });
+  const longueursTrie = longueurs.sort((a, b) => {
+      return a - b;
+  });
+  return longueursTrie[0];
+}
 
-
-
-
-
-
-
+console.log(findShort("Prachett is the best author in the world ")); 
+console.log(findShort("The quick brown fox jumps over the lazy dog")); 
 
 
 //----------------------------------------------------------------------------------------------//
@@ -585,4 +679,79 @@ console.log(rotationsPossibles(maString));
 // }
 
 // console.log(sortString(["Banana", "Orange", "Apple", "Mango"]))
+
+//----------------------------------------------------------------------------------------------//
+
+// EXERCICE 26
+// Écris une fonction qui étant donné deux angles d'un triangle renvoie la mesure du troisième angle.
+// ( Rappel : la somme des trois angles d'un triangle est toujours égale à 180 degrés )
+// Exemple :
+// otherAngle(30, 60) // 90
+// otherAngle(60, 60) // 60
+// Indice : Pour trouver le troisième angle, tu dois soustraire la somme des deux angles donnés à 180 degrés.
+
+// CODE ICI
+
+//----------------------------------------------------------------------------------------------//
+
+// EXERCICE 27
+// Écris une fonction qui peut déterminer si une année est une année bissextile ou non. Elle doit renvoyer true si c'est le cas, sinon false.
+// ( Rappel : Une année bissextile est une année contenant 366 jours au lieu de 365. Elle est donc plus longue qu'une année normale. Une année bissextile a lieu tous les 4 ans. )
+// Exemple :
+// isLeapYear(2020) // true
+// isLeapYear(2021) // false
+// Indice : Pour savoir ça tu peux utiliser le modulo. Si une année est divisible par 4 et que le reste de la division est égal à 0, alors c'est une année bissextile.
+
+// CODE ICI
+
+//----------------------------------------------------------------------------------------------//
+
+// EXERCICE 28
+
+// Voici un example de tableau d'animaux. Écris une fonction qui à partir d'un tableau similaire reçu en paramètre renvoie un nouveau tableau qui lui même contient deux sous-tableaux. Le premier sous-tableau doit contenir les animaux domestiques et le second les animaux sauvages. Les animaux domestiques doivent être triés par ordre alphabétique et les animaux sauvages par ordre alphabétique inversé.
+
+const animals = [
+  { name: "Panda", type: "Wild" },
+  { name: "Cat", type: "Domestic" },
+  { name: "Turtle", type: "Domestic" },
+  { name: "Dog", type: "Domestic" },
+  { name: "Crocodile", type: "Wild" },
+  { name: "Eagle", type: "Wild" },
+  { name: "Donkey", type: "Domestic" },
+  { name: "Pigeon", type: "Domestic" },
+  { name: "Monkey", type: "Wild" }
+]
+
+// Exemple :
+// sortAnimals(animals) // [["Cat", "Dog", "Donkey", "Pigeon", "Turtle"], ["Eagle", "Monkey", "Panda", "Crocodile"]]
+// Indice : Oubliez pas que tu peux créer des variables qui contiennent des tableaux vides et que tu peux ajouter des éléments à un tableau avec la méthode push(). Mais vu que tu dois analyser le tableau d'animaux pour le trier, tu dois utiliser une boucle et faire des conditions if pour savoir si l'animal est domestique ou sauvage. Et tu dois trier les animaux domestiques par ordre alphabétique et les animaux sauvages par ordre alphabétique inversé. Pour trier un tableau par ordre alphabétique tu peux utiliser la méthode sort(). Pour trier un tableau par ordre alphabétique inversé tu peux utiliser la méthode reverse().
+
+// CODE ICI
+
+
+
+
+
+//-----------------------------------------------SOLUTIONS-----------------------------------------------//
+
+// const sortAnimals = (animals) => {
+//     let tableauDomestic = []
+//     let tableauWild = []
+//     let tableauFinal = []
+//     for (let i = 0; i < animals.length; i++) {
+//         if (animals[i].type === "Domestic") {
+//         tableauDomestic.push(animals[i].name)
+//         } else {
+//         tableauWild.push(animals[i].name)
+//         }
+//     }
+//     tableauDomestic.sort()
+//     tableauWild.sort()
+//     tableauWild.reverse()
+//     tableauFinal.push(tableauDomestic)
+//     tableauFinal.push(tableauWild)
+//     return tableauFinal
+//     }
+
+// console.log(sortAnimals(animals))
 
