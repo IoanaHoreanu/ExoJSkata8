@@ -487,12 +487,16 @@ console.log(findShort("The quick brown fox jumps over the lazy dog"));
 
 
 // CODE ICI
+function anagram(str1, str2) {
+  const sortedStr1 = str1.split('').sort().join('');
+  const sortedStr2 = str2.split('').sort().join('');
+  return sortedStr1 === sortedStr2;
+}
 
-
-
-
-
-
+const result1 = anagram("listen", "silent");
+console.log(result1); 
+const result21 = anagram("hello", "world");
+console.log(result21);
 
 //----------------------------------------------------------------------------------------------//
 //----------------------------------------------------------------------------------------------//
@@ -529,12 +533,21 @@ console.log(findShort("The quick brown fox jumps over the lazy dog"));
 
 
 // CODE ICI
+function removeDoubleLetters(str) {
+  const charArray = str.split('');
+  for (let i = 0; i < charArray.length - 1; i++) {
+      if (charArray[i] === charArray[i + 1]) {
+          charArray.splice(i + 1, 1);
+          i--;
+      }
+  }
+  return charArray.join('');
+}
 
-
-
-
-
-
+const result3 = removeDoubleLetters("google");
+console.log(result3); 
+const result4 = removeDoubleLetters("Hello World!");
+console.log(result4); 
 
 //----------------------------------------------------------------------------------------------//
 //----------------------------------------------------------------------------------------------//
@@ -574,10 +587,19 @@ console.log(findShort("The quick brown fox jumps over the lazy dog"));
 // Indice : Utilisez la méthode slice() pour découper le tableau en plusieurs morceaux. Puis utilisez la méthode join() pour transformer un tableau en string.
 
 // CODE ICI
+function createPhoneNumber(numbers) {
+  if (numbers.length !== 10) {
+      return "Le tableau doit contenir exactement 10 entiers.";
+  }
+  const areaCode = numbers.slice(0, 3).join('');
+  const firstPart = numbers.slice(3, 6).join('');
+  const secondPart = numbers.slice(6, 10).join('');
+  const phoneNumber = `(${areaCode}) ${firstPart}-${secondPart}`;
+  return phoneNumber;
+}
 
-
-
-
+const result = createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
+console.log(result); 
 
 //----------------------------------------------------------------------------------------------//
 //----------------------------------------------------------------------------------------------//
@@ -611,12 +633,19 @@ console.log(findShort("The quick brown fox jumps over the lazy dog"));
 // Indice 3 : Il y a plus cas comparer les codes unicode des caractères du tableau avec les codes unicode des caractères manquants pour trouver le caractère manquant avec une condition if. Et retourner le caractère manquant avec un return et la méthode fromCharCode().
 
 // CODE ICI
+function findMissingLetter(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i].charCodeAt(0) + 1 !== arr[i + 1].charCodeAt(0)) {
+          return String.fromCharCode(arr[i].charCodeAt(0) + 1);
+      }
+  }
+  return undefined;
+}
 
-
-
-
-
-
+const result11 = findMissingLetter(["a", "b", "c", "d", "f"]);
+console.log(result11);
+const result10 = findMissingLetter(["O", "Q", "R", "S"]);
+console.log(result10); 
 
 //----------------------------------------------------------------------------------------------//
 //----------------------------------------------------------------------------------------------//
@@ -650,11 +679,17 @@ console.log(findShort("The quick brown fox jumps over the lazy dog"));
 // Indice 2 : Pour trier un tableau de string par ordre alphabétique en se basant sur l'ordre alphabétique des lettres, vous devez utiliser une fonction de comparaison en paramètre de la méthode sort(). Cette fonction de comparaison prend deux paramètres (a et b) et renvoie un nombre négatif si a est plus petit que b, un nombre positif si a est plus grand que b et 0 si a est égal à b.
 
 // CODE ICI
+function sortStringArray(arr) {
+  arr.sort(function(a, b) {
+      return a.localeCompare(b);
+  });
+  return arr;
+}
 
-
-
-
-
+const result9 = sortStringArray(["Banana", "Orange", "Apple", "Mango"]);
+console.log(result9); 
+const result2 = sortStringArray(["lait", "beurre", "fromage", "yaourt"]);
+console.log(result2); 
 
 //----------------------------------------------------------------------------------------------//
 //----------------------------------------------------------------------------------------------//
@@ -691,6 +726,15 @@ console.log(findShort("The quick brown fox jumps over the lazy dog"));
 // Indice : Pour trouver le troisième angle, tu dois soustraire la somme des deux angles donnés à 180 degrés.
 
 // CODE ICI
+function otherAngle(angle1, angle2) {
+  const thirdAngle = 180 - angle1 - angle2;
+  return thirdAngle;
+}
+
+const result7 = otherAngle(30, 60);
+console.log(result7); 
+const result8 = otherAngle(60, 60);
+console.log(result8); 
 
 //----------------------------------------------------------------------------------------------//
 
@@ -703,6 +747,18 @@ console.log(findShort("The quick brown fox jumps over the lazy dog"));
 // Indice : Pour savoir ça tu peux utiliser le modulo. Si une année est divisible par 4 et que le reste de la division est égal à 0, alors c'est une année bissextile.
 
 // CODE ICI
+function isLeapYear(year) {
+  if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+      return true;
+  } else {
+      return false;
+  }
+}
+
+const result5 = isLeapYear(2020);
+console.log(result5); 
+const result6 = isLeapYear(2021);
+console.log(result6); 
 
 //----------------------------------------------------------------------------------------------//
 
@@ -727,10 +783,34 @@ const animals = [
 // Indice : Oubliez pas que tu peux créer des variables qui contiennent des tableaux vides et que tu peux ajouter des éléments à un tableau avec la méthode push(). Mais vu que tu dois analyser le tableau d'animaux pour le trier, tu dois utiliser une boucle et faire des conditions if pour savoir si l'animal est domestique ou sauvage. Et tu dois trier les animaux domestiques par ordre alphabétique et les animaux sauvages par ordre alphabétique inversé. Pour trier un tableau par ordre alphabétique tu peux utiliser la méthode sort(). Pour trier un tableau par ordre alphabétique inversé tu peux utiliser la méthode reverse().
 
 // CODE ICI
+function sortAnimals(animalArray) {
+  const domesticAnimals = [];
+  const wildAnimals = [];
+  for (const animal of animalArray) {
+      if (animal.type === "Domestic") {
+          domesticAnimals.push(animal.name);
+      } else if (animal.type === "Wild") {
+          wildAnimals.push(animal.name);
+      }
+  }
+  domesticAnimals.sort();
+  wildAnimals.sort().reverse();
+  return [domesticAnimals, wildAnimals];
+}
 
-
-
-
+const animal = [
+  { name: "Panda", type: "Wild" },
+  { name: "Cat", type: "Domestic" },
+  { name: "Turtle", type: "Domestic" },
+  { name: "Dog", type: "Domestic" },
+  { name: "Crocodile", type: "Wild" },
+  { name: "Eagle", type: "Wild" },
+  { name: "Donkey", type: "Domestic" },
+  { name: "Pigeon", type: "Domestic" },
+  { name: "Monkey", type: "Wild" }
+];
+const sortedAnimals = sortAnimals(animal);
+console.log(sortedAnimals);
 
 //-----------------------------------------------SOLUTIONS-----------------------------------------------//
 
