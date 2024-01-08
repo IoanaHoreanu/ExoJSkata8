@@ -1009,18 +1009,26 @@ console.log(sumArr(["2", "5", "3"], ["2", "4", "9", "5", "5"]));
 
 // CODE ICI
 
-let tableauName = ["Aldric", "Dolgrin", "Ernst", "Gellius", "Gorstag", "Hagar", "Jozan", "Kef", "Leve", "Morn", "Perrin", "Reed", "Rulf", "Shandar", "Taman", "Urth"]
-let tableauClass = ["barbarian", "bard", "cleric", "druid", "fighter", "monk", "paladin", "ranger", "rogue", "sorcerer", "warlock", "wizard"]
 
+function generatedCharacter() {
+  let tableauName = ["Aldric", "Dolgrin", "Ernst", "Gellius", "Gorstag", "Hagar", "Jozan", "Kef", "Leve", "Morn", "Perrin", "Reed", "Rulf", "Shandar", "Taman", "Urth"];
+  let tableauClass = ["barbarian", "bard", "cleric", "druid", "fighter", "monk", "paladin", "ranger", "rogue", "sorcerer", "warlock", "wizard"];
+  
+  let characters = [];
 
+  for (let i = 0; i < 10; i++) {
+    let randomNameIndex = Math.floor(Math.random() * tableauName.length);
+    let randomClassIndex = Math.floor(Math.random() * tableauClass.length);
+    
+    let character = [tableauName[randomNameIndex], tableauClass[randomClassIndex]];
+    characters.push(character);
+  }
 
+  return characters;
+}
 
-
-
-
-
-
-
+let generatedCharacters = generatedCharacter();
+console.log(generatedCharacters);
 
 
 //-----------------------------------------------SOLUTIONS-----------------------------------------------//
@@ -1076,16 +1084,22 @@ let tableauClass = ["barbarian", "bard", "cleric", "druid", "fighter", "monk", "
 
 // CODE ICI
 
+function findMissingLetter(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    let currentCharCode = arr[i].charCodeAt(0);
+    let nextCharCode = arr[i + 1].charCodeAt(0);
 
+    if (nextCharCode - currentCharCode !== 1) {
+      return String.fromCharCode(currentCharCode + 1);
+    }
+  }
 
+  return undefined;
+}
 
-
-
-
-
-
-
-
+console.log(findMissingLetter(["a", "b", "c", "d", "f"])); 
+console.log(findMissingLetter(["O", "Q", "R", "S"]));       
+console.log(findMissingLetter(["a", "b", "c"]));             
 
 
 //-----------------------------------------------SOLUTIONS-----------------------------------------------//
